@@ -21,13 +21,15 @@ class Employee:
 
 
 if __name__ == "__main__":
-    name = input("Enter employee name: ")
-    dept = input("Enter department: ")
-    total_days = int(input("Enter total working days: "))
-    present_days = int(input("Enter days present: "))
+    # Changed part (no input)
+    name = "Akshata"
+    dept = "IT"
+    total_days = 30
+    present_days = 24
 
     emp = Employee(name, dept, total_days, present_days)
-    print(f"\nEmployee: {emp.name}")
+
+    print(f"Employee: {emp.name}")
     print(f"Department: {emp.dept}")
     print(f"Attendance %: {emp.attendance_percentage():.2f}")
     print(f"Status: {emp.status()}")
