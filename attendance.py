@@ -1,3 +1,5 @@
+import os
+
 class Employee:
     def __init__(self, name, department, total_days, present_days):
         self.name = name
@@ -6,27 +8,38 @@ class Employee:
         self.present_days = present_days
 
     def attendance_percentage(self):
-        return int((self.present_days / self.total_days) * 100)
+        return (self.present_days / self.total_days) * 100
 
     def status(self):
-        p = self.attendance_percentage()
-        if p >= 90:
+        percent = self.attendance_percentage()
+        if percent >= 90:
             return "Excellent"
-        elif p >= 75:
+        elif percent >= 75:
             return "Good"
-        elif p >= 50:
+        elif percent >= 50:
             return "Average"
         else:
             return "Poor"
 
 
-# 👇 THIS IS VERY IMPORTANT
-if __name__ == "__main__":
-    name = input("Enter employee name: ")
-    dept = input("Enter department: ")
-    total = int(input("Enter total working days: "))
-    present = int(input("Enter present days: "))
+def main():
+    # Jenkins / CI mode (no input)
+    if os.getenv("JENKINS_HOME"):
+        name = "CI_User"
+        dept = "Automation"
+        total = 100
+        present = 90
+    else:
+        # Local interactive mode
+        name = input("Enter employee name: ")
+        dept = input("Enter department: ")
+        total = int(input("Enter total working days: "))
+        present = int(input("Enter number of days present: "))
 
     emp = Employee(name, dept, total, present)
-    print("Attendance %:", emp.attendance_percentage())
-    print("Status:", emp.status())
+    print(f"Attendance %: {emp.attendance_percentage():.2f}")
+    print(f"Status: {emp.status()}")
+
+
+if __name__ == "__main__":
+    main()
