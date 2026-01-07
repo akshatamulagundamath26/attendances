@@ -23,22 +23,25 @@ class Employee:
 
 
 def main():
-    # Jenkins / CI mode (no input)
     if os.getenv("JENKINS_HOME"):
-        name = "CI_User"
-        dept = "Automation"
+        name = "Akshay"
+        dept = "HR"
         total = 100
         present = 90
     else:
-        # Local interactive mode
         name = input("Enter employee name: ")
         dept = input("Enter department: ")
         total = int(input("Enter total working days: "))
         present = int(input("Enter number of days present: "))
 
     emp = Employee(name, dept, total, present)
-    print(f"Attendance %: {emp.attendance_percentage():.2f}")
-    print(f"Status: {emp.status()}")
+
+    print("Employee Name :", emp.name)
+    print("Department    :", emp.department)
+    print("Total Days    :", emp.total_days)
+    print("Present Days  :", emp.present_days)
+    print(f"Attendance %  : {emp.attendance_percentage():.2f}")
+    print("Status        :", emp.status())
 
 
 if __name__ == "__main__":
