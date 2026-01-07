@@ -1,5 +1,5 @@
 import pytest
-from app.attendance import Employee
+from attendance import Employee
 
 def test_attendance_percentage():
     emp = Employee("Akshay", "HR", 100, 90)
