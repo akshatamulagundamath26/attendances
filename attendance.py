@@ -1,7 +1,7 @@
 class Employee:
-    def __init__(self, name, dept, total_days, present_days):
+    def __init__(self, name, department, total_days, present_days):
         self.name = name
-        self.dept = dept
+        self.department = department
         self.total_days = total_days
         self.present_days = present_days
 
@@ -9,28 +9,22 @@ class Employee:
         return (self.present_days / self.total_days) * 100
 
     def status(self):
-        pct = self.attendance_percentage()
-        if pct >= 90:
+        percent = self.attendance_percentage()
+        if percent >= 90:
             return "Excellent"
-        elif pct >= 75:
+        elif percent >= 75:
             return "Good"
-        elif pct >= 50:
+        elif percent >= 50:
             return "Average"
         else:
             return "Poor"
 
-
+# Only run this if executed directly, not during tests
 if __name__ == "__main__":
     name = input("Enter employee name: ")
     dept = input("Enter department: ")
-    total_days = int(input("Enter total working days: "))
-    present_days = int(input("Enter days present: "))
-
-    emp = Employee(name, dept, total_days, present_days)
-    print(f"\nEmployee: {emp.name}")
-    print(f"Department: {emp.dept}")
+    total = int(input("Enter total working days: "))
+    present = int(input("Enter number of days present: "))
+    emp = Employee(name, dept, total, present)
     print(f"Attendance %: {emp.attendance_percentage():.2f}")
     print(f"Status: {emp.status()}")
-
-
-
